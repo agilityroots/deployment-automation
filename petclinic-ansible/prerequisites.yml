@@ -1,5 +1,5 @@
 - hosts: localhost
   tasks:
     - name: install requirements to /etc/ansible/
-      local_action: command ansible-galaxy install -r requirements.yml
+      local_action: command ansible-galaxy install -r requirements.yml --force
       become: true
