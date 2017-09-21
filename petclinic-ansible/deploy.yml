@@ -1,0 +1,4 @@
+---
+- hosts: tomcat
+  tasks:
+    - shell: echo "hello world"
