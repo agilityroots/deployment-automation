@@ -25,13 +25,17 @@ class springboot {
      require => File['/opt/petclinic']
   }
 
-  if defined('$::artifactpath') {
-    notify { "downloading artifact from $::artifactpath":}
-    common::remote_file{'/opt/petclinic/petclinic.jar':
-      remote_location => "$::artifactpath",
-      mode            => '0777',
-    }
-  } else {
-    fail("A fact 'artifactpath' should be set!")
+  # if defined('$::artifactpath') {
+  #   notify { "downloading artifact from $::artifactpath":}
+  #   common::remote_file{'/opt/petclinic/petclinic.jar':
+  #     remote_location => "$::artifactpath",
+  #     mode            => '0777',
+  #   }
+  # } else {
+  #   fail("A fact 'artifactpath' should be set!")
+  # }
+
+  service{'petclinic':
+    ensure => running
   }
 }
